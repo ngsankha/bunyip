@@ -1,12 +1,17 @@
 {
   "name": "bunyip-api",
+  "description": "REST API for Bunyip",
   "version": "1.0.0",
   "dependencies": {
-    "express": "latest",
+    "express": "^4.13.1",
     "mocha": "^2.2.5",
-    "sequelize": "latest",
-    "should": "^7.0.1",
-    "sqlite3": "latest",
+    "sequelize": "^3.3.2",
+    "should": "^7.0.2",
+    "sqlite3": "^3.0.8",
     "supertest": "^1.0.1"
+  },
+  "scripts": {
+    "start": "node app",
+    "test": "node_modules/.bin/mocha"
   }
 }

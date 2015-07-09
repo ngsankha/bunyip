@@ -1,15 +1,10 @@
 var express = require('express'),
     app = express(),
-    routes = require('./routes');
+    routes = require('./routes'),
+    index = require('./handlers/index');
 
 var handlers = {
-  index: function(req, res) {
-    res.json({
-      name: 'Bunyip API',
-      version: '1.0.0',
-      status: 'OK',
-    });
-  }
+  index: index
 };
 
 function start() {

@@ -1,0 +1,12 @@
+{
+  "name": "bunyip-api",
+  "version": "1.0.0",
+  "dependencies": {
+    "express": "latest",
+    "mocha": "^2.2.5",
+    "sequelize": "latest",
+    "should": "^7.0.1",
+    "sqlite3": "latest",
+    "supertest": "^1.0.1"
+  }
+}

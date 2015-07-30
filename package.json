@@ -3,8 +3,12 @@
   "description": "REST API for Bunyip",
   "version": "1.0.0",
   "dependencies": {
+    "body-parser": "^1.13.2",
     "express": "^4.13.1",
+    "imagemin": "^3.2.0",
     "mocha": "^2.2.5",
+    "morgan": "^1.6.1",
+    "multer": "^1.0.1",
     "sequelize": "^3.3.2",
     "should": "^7.0.2",
     "sqlite3": "^3.0.8",

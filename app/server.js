@@ -1,11 +1,20 @@
 var express = require('express'),
     app = express(),
+    morgan = require('morgan'),
+    bodyParser = require('body-parser'),
     routes = require('./routes'),
-    index = require('./handlers/index');
+    auth = require('../lib/auth'),
+    index = require('./handlers/index'),
+    v1 = require('./handlers/v1');
 
 var handlers = {
-  index: index
+  index: index,
+  v1: v1
 };
+
+app.use(morgan('dev'));
+app.use(bodyParser.json());
+app.use(auth.api_auth);
 
 function start() {
   routes.setup(app, handlers);

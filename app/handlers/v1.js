@@ -3,7 +3,7 @@ var minify = require('../../lib/minifyImage').minify,
     util = require('../../lib/missingUtils');
 
 var destPath = function(username) {
-  return 'uploads/' + username + '_' + util.randomID();
+  return 'dl/' + username + '_' + util.randomID();
 }
 
 var upload = function(req, res) {

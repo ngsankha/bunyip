@@ -2,6 +2,7 @@ var express = require('express'),
     app = express(),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
+    multipart = require('connect-multiparty'),
     routes = require('./routes'),
     auth = require('../lib/auth'),
     index = require('./handlers/index'),
@@ -12,8 +13,14 @@ var handlers = {
   v1: v1
 };
 
+var multipartMiddleware = multipart();
+
+app.use(multipartMiddleware);
 app.use(morgan('dev'));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(auth.api_auth);
 
 function start() {

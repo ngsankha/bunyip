@@ -45,11 +45,13 @@ describe('Routes', function() {
 
   describe('v1 api', function() {
     it('tells if wrong auth details are used', function(done) {
+      auth = {username: 'test', api_key: 'abc', wait: true};
       request.post('/v1/upload')
-      .set('username', 'test')
-      .set('api_key', 'abc')
-      .set('wait', true)
-      //.attach('image', '/Users/sankha/Pictures/DSC_0080.jpg')
+      .set('Content-Type', 'multipart/form-data')
+      .field('username', 'test')
+      .field('api_key', 'abc')
+      .field('wait', 'true')
+      .attach('image', '/Users/sankha/Pictures/DSC_0080.jpg')
       .expect('Content-Type', /json/)
       .expect(200)
       .end(function(err, res) {

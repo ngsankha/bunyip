@@ -1,6 +1,7 @@
 var express = require('express'),
     app = express(),
     morgan = require('morgan'),
+    winston = require('winston'),
     bodyParser = require('body-parser'),
     multipart = require('connect-multiparty'),
     routes = require('./routes'),
@@ -22,6 +23,8 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(auth.api_auth);
+
+winston.level = 'debug';
 
 function start() {
   routes.setup(app, handlers);

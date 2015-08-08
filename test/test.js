@@ -1,6 +1,7 @@
 var should = require('should'),
     assert = require('assert'),
     request = require('supertest'),
+    fs = require('fs'),
     Sequelize = require('sequelize');
 
 
@@ -69,7 +70,16 @@ describe('Routes', function() {
       .expect('Content-Type', /jpeg/)
       .expect(200)
       .end(function(err, res) {
-        done();
+        var minifiedFile = fs.createWriteStream('test/output.jpg');
+        res.pipe(minifiedFile);
+        fs.stat('test/lena.jpg', function(err, stat) {
+          var origSize = stat.size;
+          fs.stat('test/output.jpg', function(err, stat) {
+            var minifiedSize = stat.size;
+            minifiedSize.should.be.lessThan(origSize);
+            done();
+          });
+        });
       });
     });
   });

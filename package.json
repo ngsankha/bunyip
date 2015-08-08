@@ -9,7 +9,8 @@
     "imagemin": "^3.2.0",
     "morgan": "^1.6.1",
     "sequelize": "^3.3.2",
-    "sqlite3": "^3.0.8"
+    "sqlite3": "^3.0.8",
+    "winston": "^1.0.1"
   },
   "scripts": {
     "start": "node app",

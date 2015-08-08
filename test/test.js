@@ -45,17 +45,30 @@ describe('Routes', function() {
 
   describe('v1 api', function() {
     it('tells if wrong auth details are used', function(done) {
-      auth = {username: 'test', api_key: 'abc', wait: true};
       request.post('/v1/upload')
       .set('Content-Type', 'multipart/form-data')
       .field('username', 'test')
       .field('api_key', 'abc')
       .field('wait', 'true')
-      .attach('image', '/Users/sankha/Pictures/DSC_0080.jpg')
+      .attach('image', 'test/lena.jpg')
       .expect('Content-Type', /json/)
       .expect(200)
       .end(function(err, res) {
         res.body.error.should.equal('Invalid username/api_key.');
+        done();
+      });
+    });
+
+    it('returns the compressed image if the wait parameter is true', function(done) {
+      request.post('/v1/upload')
+      .set('Content-Type', 'multipart/form-data')
+      .field('username', 'test')
+      .field('api_key', 'abcd')
+      .field('wait', 'true')
+      .attach('image', 'test/lena.jpg')
+      .expect('Content-Type', /jpeg/)
+      .expect(200)
+      .end(function(err, res) {
         done();
       });
     });

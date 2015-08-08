@@ -2,6 +2,8 @@
   "name": "bunyip-api",
   "description": "REST API for Bunyip",
   "version": "1.0.0",
+  "repository": "https://github.com/sankha93/bunyip",
+  "license": "Private",
   "dependencies": {
     "body-parser": "^1.13.2",
     "connect-multiparty": "^2.0.0",

@@ -2,6 +2,10 @@
 
 Bunyip is an image minifier service.
 
+## Requirements
+
+* Redis
+
 ## Setup and run
 
 ```

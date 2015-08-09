@@ -8,6 +8,8 @@ Bunyip is an image minifier service.
 
 ## Setup and run
 
+Rename `config.json.sample` to `config.json` and update settings as required.
+
 ```
 npm install
 npm start

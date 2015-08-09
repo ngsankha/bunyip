@@ -30,7 +30,7 @@ function start() {
   routes.setup(app, handlers);
   var port = process.env.PORT || 3000;
   app.listen(port);
-  console.log("Express server listening on port %d in %s mode", port, app.settings.env);
+  console.log("REST API server listening on port %d in %s mode", port, app.settings.env);
 }
 
 exports.start = start;

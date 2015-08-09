@@ -12,7 +12,8 @@ Rename `config.json.sample` to `config.json` and update settings as required.
 
 ```
 npm install
-npm start
+npm run api # for the REST API
+npm run download # for the download server
 ```
 
 ## Tests

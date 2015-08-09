@@ -1,13 +1,19 @@
 var minify = require('../../lib/minifyImage').minify,
     jobs = require('../../lib/jobs'),
     winston = require('winston'),
-    util = require('../../lib/missingUtils');
+    util = require('../../lib/missingUtils'),
+    config = require('../../config');
+
+var destPath = function(username) {
+  return config.paths.download + username;
+};
 
 var processJob = function(id, req, res) {
+  var username = req.body.username;
   var wait = req.body.wait;
   if (wait === 'true') {
     var image = req.files.image;
-    minify(id, image.path, 'dl/' + req.body.username, function(err, buffer) {
+    minify(id, image.path, destPath(username), function(err, buffer) {
       winston.info("Minified file %s for user %s", image.name, req.body.username);
       if (err) {
         winston.error(err);

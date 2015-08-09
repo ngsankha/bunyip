@@ -7,7 +7,8 @@ var express = require('express'),
     routes = require('./routes'),
     auth = require('../lib/auth'),
     index = require('./handlers/index'),
-    v1 = require('./handlers/v1');
+    v1 = require('./handlers/v1'),
+    config = require('../config');
 
 var handlers = {
   index: index,
@@ -16,19 +17,19 @@ var handlers = {
 
 var multipartMiddleware = multipart();
 
+app.use(morgan(config.log.level.morgan));
 app.use(multipartMiddleware);
-app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(auth.api_auth);
 
-winston.level = 'debug';
+winston.level = config.log.level.winston;
 
 function start() {
   routes.setup(app, handlers);
-  var port = process.env.PORT || 3000;
+  var port = config.ports.api;
   app.listen(port);
   console.log("REST API server listening on port %d in %s mode", port, app.settings.env);
 }

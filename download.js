@@ -1,9 +1,12 @@
 var express = require('express'),
     morgan = require('morgan'),
     app = express(),
-    jobs = require('./lib/jobs');
+    jobs = require('./lib/jobs'),
+    winston = require('winston'),
+    config = require('./config');
 
-app.use(morgan('dev'));
+app.use(morgan(config.log.level.morgan));
+winston.level = config.log.level.winston;
 
 app.get('/', function(req, res) {
   res.json({
@@ -29,6 +32,6 @@ app.get('/*', function(req, res) {
   });
 });
 
-var port = process.env.PORT || 3001;
+var port = config.ports.download;
 var server = app.listen(port);
 console.log("Download server listening on port %d in %s mode", port, app.settings.env);

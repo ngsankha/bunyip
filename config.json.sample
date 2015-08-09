@@ -1,0 +1,19 @@
+{
+  "log": {
+    "level": {
+      "morgan": "dev",
+      "winston": "debug"
+    }
+  },
+  "ports": {
+    "api": 3000,
+    "download": 3001
+  },
+  "paths": {
+    "download": "dl/"
+  },
+  "jobs": {
+    "timeout": 3600,
+    "prefix": "bunyip::job::"
+  }
+}
